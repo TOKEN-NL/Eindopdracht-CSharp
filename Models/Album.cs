@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Eindopdracht.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace WPF_MVVM_KB_2024.Models
 {
     public class Album
     {
-        public int AlbumId { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public int ReleaseYear { get; set; }
         public string CoverImage { get; set; }
         public ObservableCollection<Song> Songs { get; set; } 
-        public List<string> Artists { get; set; }
+        public ObservableCollection<Artist> Artists { get; set; }
     }
 }
