@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF_MVVM_KB_2024.Models
+namespace Eindopdracht.Models
 {
     public class Song
     {

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WPF_MVVM_KB_2024.Models;
+using Eindopdracht.Models;
 
 namespace Eindopdracht.Models
 {

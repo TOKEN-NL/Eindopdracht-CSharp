@@ -8,7 +8,7 @@ using System.Windows.Input;
 using Eindopdracht.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace WPF_MVVM_KB_2024.Models
+namespace Eindopdracht.Models
 {
     public class MyDbContext : DbContext
     {

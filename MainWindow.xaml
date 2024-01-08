@@ -6,7 +6,38 @@
         xmlns:local="clr-namespace:Eindopdracht"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+   
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+
+
+
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Background="Gray">
+            <StackPanel>
+                <Label Content="Search"/>
+                <TextBox Text=""  FontSize="28" TextChanged="TextBox_TextChanged"/>
+                <Button Content="Songs" Click="Song_Click" FontSize="28"/>
+                <Button Content="Artists" Click="Artist_Click" FontSize="28"/>
+                <Button Content="Albums" Click="Album_Click" FontSize="28"/>
+            </StackPanel>
+        </DockPanel>
+        <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding}"/>
+        
 
     </Grid>
 </Window>
