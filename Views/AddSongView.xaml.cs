@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CSharpLes42;
+using Eindopdracht.Models;
+using Eindopdracht.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,10 @@ namespace Eindopdracht.Views
         public AddSongView()
         {
             InitializeComponent();
+            DataContext = new AddSongViewModel(new MyDbContext()); 
+
         }
+
+
     }
 }

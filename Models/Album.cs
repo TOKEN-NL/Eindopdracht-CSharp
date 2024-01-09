@@ -15,6 +15,5 @@ namespace Eindopdracht.Models
         public int ReleaseYear { get; set; }
         public string CoverImage { get; set; }
         public ObservableCollection<Song> Songs { get; set; } 
-        public ObservableCollection<Artist> Artists { get; set; }
     }
 }

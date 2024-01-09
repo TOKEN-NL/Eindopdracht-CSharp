@@ -49,6 +49,16 @@ namespace Eindopdracht.Models
                     ArtistName = "testname",
                     FirstName = "test",
                     LastName = "name"
+                }); 
+            modelBuilder.Entity<Song>()
+                .HasData(
+                new
+                {
+                    Id = 1,
+                    Title = "testname",
+                    Genre = "Rock",
+                    DurationInSeconds = 234,
+                    ReleaseDate = new DateTime(20000)
                 });
         }
     }

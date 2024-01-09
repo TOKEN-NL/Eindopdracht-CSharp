@@ -15,6 +15,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Eindopdracht.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Identity.Client;
+using Eindopdracht.ViewModels;
+using Eindopdracht.Views;
 
 namespace Eindopdracht
 {
@@ -26,11 +29,16 @@ namespace Eindopdracht
         public MainWindow()
         {
             InitializeComponent();
+            var db = ((App)Application.Current).ServiceProvider.GetService<MyDbContext>();
+
+            //DataContext = new MainViewModel(db);
+
         }
 
         private void Album_Click(object sender, RoutedEventArgs e)
         {
-           
+            
+
         }
         private void Artist_Click(object sender, RoutedEventArgs e)
         {
@@ -38,12 +46,22 @@ namespace Eindopdracht
         }
         private void Song_Click(object sender, RoutedEventArgs e)
         {
+            var db = ((App)Application.Current).ServiceProvider.GetService<MyDbContext>();
 
+            var addSongViewModel = new AddSongViewModel(db);
+
+            // Maak een nieuwe instantie van de AddSongView en wijs de DataContext toe aan AddSongViewModel
+            var addSongView = new AddSongView();
+            addSongView.DataContext = addSongViewModel;
+
+            // Wijs de Content van de ContentControl toe aan de AddSongView
+            contentControl.Content = addSongView;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             //typing in searchbox 
+            
         }
     }
 }

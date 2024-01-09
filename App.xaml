@@ -6,5 +6,8 @@
              xmlns:views="clr-namespace:Eindopdracht.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:AddSongViewModel}">
+            <views:AddSongView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>

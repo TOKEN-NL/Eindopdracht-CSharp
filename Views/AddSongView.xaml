@@ -29,7 +29,7 @@
            
         
         <TextBlock Grid.Row="0" Text="Title"/>
-        <TextBox Grid.Row="1" Text="" Margin="0 5 0 0"/>
+            <TextBox Grid.Row="1" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Margin="0 5 0 0"/>
     </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
@@ -38,7 +38,7 @@
             </Grid.RowDefinitions>
             
             <TextBlock Grid.Row="0" Text="Artist"/>
-            <TextBox Grid.Row="1" Text="" Margin="0 5 0 0"/>
+            <TextBox Grid.Row="1" Text="{Binding Artist, UpdateSourceTrigger=PropertyChanged}" Margin="0 5 0 0"/>
           
         </Grid>
         <Grid Grid.Row="3">
@@ -48,11 +48,11 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Text="Album"/>
-            <TextBox Grid.Row="1" Text="" Margin="0 5 0 0"/>
+            <TextBox Grid.Row="1" Text="{Binding Album, UpdateSourceTrigger=PropertyChanged}" Margin="0 5 0 0"/>
         </Grid>
     <StackPanel Grid.Row="4" Orientation="Horizontal">
-            <Button Content="Submit"/>
-            <Button Margin="5 0 0 0" Content="Cancel"/>
+            <Button Content="Submit" Command="{Binding SaveSongCommand}"/>
+            <Button Margin="5 0 0 0" Content="Cancel" Command="{Binding CancelCommand}"/>
         </StackPanel>
  </Grid>
 
