@@ -4,6 +4,7 @@ using Eindopdracht.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eindopdracht.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240109182857_NewModelSetup")]
+    partial class NewModelSetup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,15 +62,6 @@ namespace Eindopdracht.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Albums");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CoverImage = "image",
-                            ReleaseYear = 1997,
-                            Title = "testingg"
-                        });
                 });
 
             modelBuilder.Entity("Eindopdracht.Models.Song", b =>
@@ -107,7 +101,7 @@ namespace Eindopdracht.Migrations
                             Artist = "Hello",
                             DurationInSeconds = 234,
                             Genre = "Rock",
-                            ReleaseDate = new DateTime(2007, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateTime(1, 1, 1, 0, 0, 0, 2, DateTimeKind.Unspecified),
                             Title = "testname"
                         });
                 });

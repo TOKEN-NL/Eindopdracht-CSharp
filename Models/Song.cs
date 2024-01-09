@@ -17,7 +17,6 @@ namespace Eindopdracht.Models
         public DateTime ReleaseDate { get; set; }
         public int DurationInSeconds { get; set; }
 
-        // Songs kunnen op meerdere Albums voorkomen, vandaar een lijst met AlbumIds
         public ObservableCollection<Album> Albums { get; set; }
     }
 }

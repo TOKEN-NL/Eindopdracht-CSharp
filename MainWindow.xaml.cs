@@ -29,12 +29,21 @@ namespace Eindopdracht
         public MainWindow()
         {
             InitializeComponent();
+            MainView();
+        }
+        public void MainView()
+        {
             var db = ((App)Application.Current).ServiceProvider.GetService<MyDbContext>();
 
-            //DataContext = new MainViewModel(db);
+            var AllSongsViewModel = new AllSongsViewModel(db);
 
+            // Maak een nieuwe instantie van de AddSongView en wijs de DataContext toe aan AddSongViewModel
+            var AllSongsView = new AllSongsView();
+            AllSongsView.DataContext = AllSongsViewModel;
+
+            // Wijs de Content van de ContentControl toe aan de AddSongView
+            contentControl.Content = AllSongsView;
         }
-
         private void Album_Click(object sender, RoutedEventArgs e)
         {
             
@@ -44,7 +53,7 @@ namespace Eindopdracht
         {
 
         }
-        private void Song_Click(object sender, RoutedEventArgs e)
+        public void Song_Click(object sender, RoutedEventArgs e)
         {
             var db = ((App)Application.Current).ServiceProvider.GetService<MyDbContext>();
 
@@ -56,6 +65,7 @@ namespace Eindopdracht
 
             // Wijs de Content van de ContentControl toe aan de AddSongView
             contentControl.Content = addSongView;
+         
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -14,7 +14,6 @@ namespace Eindopdracht.Models
     {
         public DbSet<Song> Songs { get; set; }
         public DbSet<Album> Albums { get; set; }
-        public DbSet<Artist> Artists { get; set; }
 
 
 
@@ -30,26 +29,10 @@ namespace Eindopdracht.Models
                 .HasMany(h => h.Songs);
             modelBuilder.Entity<Song>()
                 .HasMany(h => h.Albums);
-            modelBuilder.Entity<Artist>()
-                .HasMany(h => h.Songs);
-            modelBuilder.Entity<Album>()
-                .HasMany(h => h.Artists);
-            modelBuilder.Entity<Song>()
-                .HasMany(h => h.Artists);
-            modelBuilder.Entity<Artist>()
-                .HasMany(h => h.Albums);
+
 
             // Voeg hier eventuele aanvullende configuratie toe voor je entiteiten
 
-            modelBuilder.Entity<Artist>()
-                .HasData(
-                new
-                {
-                    Id = 1,
-                    ArtistName = "testname",
-                    FirstName = "test",
-                    LastName = "name"
-                }); 
             modelBuilder.Entity<Song>()
                 .HasData(
                 new
@@ -57,8 +40,19 @@ namespace Eindopdracht.Models
                     Id = 1,
                     Title = "testname",
                     Genre = "Rock",
+                    Artist = "Hello",
                     DurationInSeconds = 234,
-                    ReleaseDate = new DateTime(20000)
+                    ReleaseDate = new DateTime(2007, 4, 1)
+                }); 
+            modelBuilder.Entity<Album>()
+                .HasData(
+                new
+                {
+                    Id = 1,
+                    Title = "testingg",
+                    ReleaseYear = 1997,
+                    CoverImage = "image"
+
                 });
         }
     }

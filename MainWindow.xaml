@@ -32,8 +32,6 @@
 
         <DockPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Background="Gray">
             <StackPanel>
-                <Label Content="Search"/>
-                <TextBox Text=""  FontSize="28" TextChanged="TextBox_TextChanged"/>
                 <Button Content="Add Song" Click="Song_Click" FontSize="28"/>
                 <Button Content="Add Artist" Click="Artist_Click" FontSize="28"/>
                 <Button Content="Add Album" Click="Album_Click" FontSize="28"/>
