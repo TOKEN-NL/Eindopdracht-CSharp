@@ -32,9 +32,13 @@
 
         <DockPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Background="Gray">
             <StackPanel>
+                <Button Content="All Songs" Click="Home_Click" FontSize="28"/>
                 <Button Content="Add Song" Click="Song_Click" FontSize="28"/>
-                <Button Content="Add Artist" Click="Artist_Click" FontSize="28"/>
+                <Button Content="All Albums" Click="AlbumList_Click" FontSize="28"/>
                 <Button Content="Add Album" Click="Album_Click" FontSize="28"/>
+                <Button Content="Connect" Click="Connect_Click" FontSize="28"/>
+
+
             </StackPanel>
         </DockPanel>
         <ContentControl x:Name="contentControl" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding Content}"/>

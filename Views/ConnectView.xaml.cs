@@ -5,9 +5,9 @@ namespace Eindopdracht.Views
     /// <summary>
     /// Interaction logic for AllSongsView.xaml
     /// </summary>
-    public partial class AllSongsView : UserControl
+    public partial class ConnectView : UserControl
     {
-        public AllSongsView()
+        public ConnectView()
         {
             InitializeComponent();
         }

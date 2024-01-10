@@ -1,23 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Eindopdracht.Models;
+﻿using Eindopdracht.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Identity.Client;
-using Eindopdracht.ViewModels;
-using Eindopdracht.Views;
+using System;
+using System.Windows;
 
 namespace Eindopdracht
 {
@@ -31,47 +15,63 @@ namespace Eindopdracht
             InitializeComponent();
             MainView();
         }
-        public void MainView()
+        public void MainView() { logic("AllSongs"); }
+        private void Home_Click(object sender, RoutedEventArgs e) { logic("AllSongs"); }
+        private void Connect_Click(object sender, RoutedEventArgs e) { logic("Connect"); }
+        private void Album_Click(object sender, RoutedEventArgs e) { logic("AddAlbum"); }
+        public void Song_Click(object sender, RoutedEventArgs e) { logic("AddSong"); }
+        private void AlbumList_Click(object sender, RoutedEventArgs e) 
         {
-            var db = ((App)Application.Current).ServiceProvider.GetService<MyDbContext>();
+            System.Windows.MessageBox.Show("This page does not exist yet :)", "Error");
 
-            var AllSongsViewModel = new AllSongsViewModel(db);
-
-            // Maak een nieuwe instantie van de AddSongView en wijs de DataContext toe aan AddSongViewModel
-            var AllSongsView = new AllSongsView();
-            AllSongsView.DataContext = AllSongsViewModel;
-
-            // Wijs de Content van de ContentControl toe aan de AddSongView
-            contentControl.Content = AllSongsView;
-        }
-        private void Album_Click(object sender, RoutedEventArgs e)
-        {
-            
-
-        }
-        private void Artist_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        public void Song_Click(object sender, RoutedEventArgs e)
-        {
-            var db = ((App)Application.Current).ServiceProvider.GetService<MyDbContext>();
-
-            var addSongViewModel = new AddSongViewModel(db);
-
-            // Maak een nieuwe instantie van de AddSongView en wijs de DataContext toe aan AddSongViewModel
-            var addSongView = new AddSongView();
-            addSongView.DataContext = addSongViewModel;
-
-            // Wijs de Content van de ContentControl toe aan de AddSongView
-            contentControl.Content = addSongView;
-         
+            //  logic("AllAlbums"); 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        public void logic(string page)
         {
-            //typing in searchbox 
-            
+            //Navigation logic function
+
+            string viewName = $"{page}View";
+            string viewModelName = $"{page}ViewModel";
+            Type viewModelType = Type.GetType($"Eindopdracht.ViewModels.{viewModelName}");
+
+            if (viewModelType != null)
+            {
+                var db = ((App)Application.Current).ServiceProvider.GetService<MyDbContext>();
+                var viewModel = Activator.CreateInstance(viewModelType, db);
+
+                Type viewType = Type.GetType($"Eindopdracht.Views.{viewName}");
+                if (viewType != null)
+                {
+                    var view = Activator.CreateInstance(viewType);
+                    var property = view.GetType().GetProperty("DataContext");
+                    if (property != null)
+                    {
+                        property.SetValue(view, viewModel);
+                        contentControl.Content = view;
+                    }
+                    else
+                    {
+                        // DataContext property niet gevonden in de view
+                        System.Windows.MessageBox.Show("DataContext not found", "Error");
+
+                    }
+                }
+                else
+                {
+                    // viewType niet gevonden
+                    System.Windows.MessageBox.Show("ViewType not found", "Error");
+
+                }
+            }
+            else
+            {
+                // viewModelType niet gevonden
+                System.Windows.MessageBox.Show("ViewModelType not found", "Error");
+
+            }
         }
+
     }
 }

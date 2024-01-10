@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Eindopdracht.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Eindopdracht.Models
 {
@@ -19,7 +12,6 @@ namespace Eindopdracht.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Configureer hier je databaseverbinding, bijvoorbeeld met SQL Server
             optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = MusicStreamingDB;Integrated Security=True;");
         }
 
@@ -31,7 +23,6 @@ namespace Eindopdracht.Models
                 .HasMany(h => h.Albums);
 
 
-            // Voeg hier eventuele aanvullende configuratie toe voor je entiteiten
 
             modelBuilder.Entity<Song>()
                 .HasData(
@@ -43,7 +34,7 @@ namespace Eindopdracht.Models
                     Artist = "Hello",
                     DurationInSeconds = 234,
                     ReleaseDate = new DateTime(2007, 4, 1)
-                }); 
+                });
             modelBuilder.Entity<Album>()
                 .HasData(
                 new

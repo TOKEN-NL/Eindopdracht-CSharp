@@ -5,11 +5,11 @@ using System.Windows.Controls;
 namespace Eindopdracht.Views
 {
     /// <summary>
-    /// Interaction logic for SongDetailsView.xaml
-    /// </summary>
-    public partial class AddSongView : UserControl
+    /// Interaction logic 
+    /// /// </summary>
+    public partial class AddAlbumView : UserControl
     {
-        public AddSongView()
+        public AddAlbumView()
         {
             InitializeComponent();
             DataContext = new AddSongViewModel(new MyDbContext());

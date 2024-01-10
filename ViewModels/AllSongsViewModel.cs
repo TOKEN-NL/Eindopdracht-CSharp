@@ -1,23 +1,18 @@
 ﻿using CSharpLes42;
 using Eindopdracht.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
-using System.Windows.Input;
 
 namespace Eindopdracht.ViewModels
 {
     public class AllSongsViewModel : ViewModelBase
     {
         private readonly MyDbContext _db;
-        public ObservableCollection<Song> Songs 
+        public ObservableCollection<Song> Songs
         {
             get { return _songs; }
             set
@@ -37,9 +32,9 @@ namespace Eindopdracht.ViewModels
             }
         }
         private ICollectionView _songsView;
-        private ObservableCollection<Song> _songs {  get; set; }
+        private ObservableCollection<Song> _songs { get; set; }
         public ObservableCollection<Album> Albums { get; set; }
-        
+
         public RelayCommand SaveChangesCommand { get; set; }
         public RelayCommand RemoveSongCommand { get; set; }
         public RelayCommand AddSongCommand { get; set; }
@@ -59,9 +54,8 @@ namespace Eindopdracht.ViewModels
         {
             _db = db;
 
-            // Load Houses with related Landlords and Tenants
             Songs = new ObservableCollection<Song>(_db.Songs
-                 //   .Include(h => h.Albums)
+                    //   .Include(h => h.Albums)
                     .ToList());
             Albums = new ObservableCollection<Album>(_db.Albums);
             SaveChangesCommand = new RelayCommand(Save);
@@ -96,18 +90,8 @@ namespace Eindopdracht.ViewModels
                 if (SelectedSong.ReleaseDate != selectedSongBeforeChanges.ReleaseDate)
                     changedProperties.Add("ReleaseDate");
 
-                var selectedAlbumsBeforeChanges = _db.Entry(SelectedSong)
-                    .Collection(s => s.Albums)
-                    .Query()
-                    .ToList();
-
-                var selectedAlbumsAfterChanges = SelectedSong.Albums.ToList();
-
-                if (!selectedAlbumsBeforeChanges.SequenceEqual(selectedAlbumsAfterChanges))
-                    changedProperties.Add("Albums");
             }
 
-            // Toon een bericht met de gewijzigde eigenschappen
             if (changedProperties.Any())
             {
                 string changedPropertiesString = string.Join(", ", changedProperties);
@@ -155,7 +139,7 @@ namespace Eindopdracht.ViewModels
                 }
             }
         }
-        
+
         private void FilterSongs(string searchQuery)
         {
             _songsView.Filter = item =>

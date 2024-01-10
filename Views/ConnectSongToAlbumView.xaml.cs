@@ -3,11 +3,11 @@
 namespace Eindopdracht.Views
 {
     /// <summary>
-    /// Interaction logic for AllSongsView.xaml
+    /// Interaction logic 
     /// </summary>
-    public partial class AllSongsView : UserControl
+    public partial class ConnectSongToAlbumView : UserControl
     {
-        public AllSongsView()
+        public ConnectSongToAlbumView()
         {
             InitializeComponent();
         }

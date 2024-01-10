@@ -1,10 +1,4 @@
-﻿using Eindopdracht.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace Eindopdracht.Models
 {
@@ -14,6 +8,6 @@ namespace Eindopdracht.Models
         public string Title { get; set; }
         public int ReleaseYear { get; set; }
         public string CoverImage { get; set; }
-        public ObservableCollection<Song> Songs { get; set; } 
+        public ObservableCollection<Song> Songs { get; set; }
     }
 }

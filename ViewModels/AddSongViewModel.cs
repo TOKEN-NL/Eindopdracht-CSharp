@@ -1,14 +1,7 @@
 ﻿using CSharpLes42;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Eindopdracht.Models;
+using System;
 using System.Collections.ObjectModel;
-using Microsoft.EntityFrameworkCore;
-using System.Windows.Controls;
 using System.Windows;
 
 namespace Eindopdracht.ViewModels
@@ -19,10 +12,8 @@ namespace Eindopdracht.ViewModels
         public ObservableCollection<Song> Songs { get; set; }
         public ObservableCollection<Album> Albums { get; set; }
 
-        private ObservableCollection<Album> _selectedAlbums;
         private string _title;
         private string _artist;
-        private string _album;
         private string _genre;
         private int _durationIS;
         private DateOnly _releaseDate;
@@ -53,15 +44,6 @@ namespace Eindopdracht.ViewModels
             }
         }
 
-        public ObservableCollection<Album> SelectedAlbums
-        {
-            get { return _selectedAlbums; }
-            set
-            {
-                _selectedAlbums = value;
-                OnPropertyChanged(nameof(SelectedAlbums));
-            }
-        }
         public string Genre
         {
             get
@@ -121,9 +103,8 @@ namespace Eindopdracht.ViewModels
                 DurationInSeconds = _durationIS,
                 Artist = _artist,
                 ReleaseDate = new DateTime(20000),
-                Albums = new ObservableCollection<Album>(_selectedAlbums) // Voeg geselecteerde albums toe aan het nummer
-
             };
+
 
             _db.Songs.Add(newSong);
             _db.SaveChanges();

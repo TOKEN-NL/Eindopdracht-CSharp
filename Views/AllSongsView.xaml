@@ -67,7 +67,7 @@
             <TextBlock Text="Genre" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="5" FontSize="15" VerticalAlignment="Center"/>
             <TextBox x:Name="GenreBox" Text="{Binding SelectedSong.Genre}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap"  Height="25" />
             <TextBlock Text="Duration (in seconds)" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5" FontSize="15" VerticalAlignment="Center"/>
-            <TextBox x:Name="DurationISBox" Text="{Binding SelectedSong.DurationIS}" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap"  Height="25" />
+            <TextBox x:Name="DurationISBox" Text="{Binding SelectedSong.DurationInSeconds}" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap"  Height="25" />
             <TextBlock Text="ReleaseDate" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="5" FontSize="15" VerticalAlignment="Center"/>
             <DatePicker x:Name="ReleaseDateBox" SelectedDate="{Binding SelectedSong.ReleaseDate}" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Height="25" />
         </Grid>
